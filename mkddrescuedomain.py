@@ -25,7 +25,10 @@ def listclusters(infile,offset,inode):
             else:
                 line=line.rstrip()
                 for x in line.split():
-                    yield int(x.rstrip())
+                    try:
+                        yield int(x.rstrip())
+                    except:
+                        pass
         else:
             if line.startswith('Type: $DATA') or line.rstrip()=='Sectors:':
                 printing=True
